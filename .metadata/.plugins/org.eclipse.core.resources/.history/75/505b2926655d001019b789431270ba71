@@ -1,0 +1,5 @@
+package mybatis.services.item;
+
+public interface itemDAO {
+
+}

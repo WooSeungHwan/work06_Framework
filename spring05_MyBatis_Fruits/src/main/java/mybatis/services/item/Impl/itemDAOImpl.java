@@ -1,0 +1,31 @@
+package mybatis.services.item.Impl;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.service.spring.domain.Item;
+
+import mybatis.services.item.itemDAO;
+
+public class itemDAOImpl implements itemDAO{
+	private SqlSession sqlSession;
+	private static final String NS = "FruitsMapper.";
+
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Override
+	public Item getItem(String itemId) throws Exception {
+
+		return sqlSession.selectOne(NS+"getItem", itemId);
+	}
+
+	@Override
+	public List<Item> getItemList(Item item) throws Exception {
+
+		return sqlSession.selectList(NS+"getItemList", item);
+	}
+
+}

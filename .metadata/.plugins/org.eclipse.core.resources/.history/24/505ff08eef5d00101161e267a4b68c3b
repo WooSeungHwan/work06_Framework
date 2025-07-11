@@ -1,0 +1,8 @@
+package mybatis.services.spring.test;
+
+public class MyBatisUniTest2 {
+	private void getAllItem throws Exception{
+		
+	}
+
+}

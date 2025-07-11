@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql query문을 모듈화 -->
+<mapper namespace="SawonMapper">
+<insert id="sawonAdd" parameterType="mySawon">
+	INSERT
+	INTO mysawon (id, pwd, name, age, hiredate)
+	VALUES (#{id}, #{pwd}, #{name}, #{age}, curdate()) <!-- mySawon.getId()를 ${id}로 표현함, getter임 -->
+
+</insert>
+<select id="sawonList" resultType="mySawon">	<!-- 제네릭을 쓴다는말임 -->
+	SELECT 
+	num, id, name, age, hiredate
+	FROM mysawon
+	ORDER BY num DESC
+</select>
+<delete id="sawonDel" parameterType="int">
+	DELETE FROM mysawon WHERE num=#{VALUE}
+</delete>
+<update id="sawonUpdate" parameterType="mySawon">
+	UPDATE mysawon 
+	SET name = #{name}, age = #{age} WHERE num = #{num}
+</update>
+</mapper>
+
+<!-- mapper config를 mapper로 변경하면 꺽새 했을때 mapper가 나온다! -->

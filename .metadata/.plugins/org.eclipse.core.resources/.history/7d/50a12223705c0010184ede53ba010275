@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+
+</mapper>
+
+
+<!-- mapper config를 mapper로 변경하면 꺽새 했을때 mapper가 나온다! -->

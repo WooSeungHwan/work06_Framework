@@ -1,0 +1,75 @@
+package mybatis.services.item.test;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.service.spring.domain.Item;
+
+import mybatis.services.domain.User;
+import mybatis.services.item.Impl.itemDAOImpl;
+import mybatis.services.user.test.TestUtil;
+
+/*
+ * FileName : MyBatisTestApp102.java
+  * ㅇ SqlMapConfig01.xml / mybatis-userservice-mapping10.xml
+  * ㅇ MyBatisUserDAOImpl10
+  * ㅇ TestUtil.java 을 이용 Test . 
+  * ㅇ Persistance Logic Layer 단위 Test..여기서 에러난다고해도 mybatis-userservice-mapping10.xml는 볼 필요없다.
+  *   ::Persistence Layer의 단위테스트 마무리
+  *  
+  *  ㅇ 다음은 Service Layer 단위 테스트 : MyBatisTestApp11.java
+  */
+public class MyBatisUnitTest {
+	///Main method
+	public static void main(String[] args) throws Exception{
+
+		SqlSession session = null;
+		//==> TestUtil 의 getSqlSessionFactory()을 이용 SqlSessionFactory instance GET
+		SqlSessionFactory factory = TestUtil.getSqlSessionFactory();
+		session=factory.openSession();
+		
+			
+		//==> itemDAOImpl 생성 및 sqlMapClient 객체 setter injection
+		itemDAOImpl dao = new itemDAOImpl();
+		dao.setSqlSession(session);
+		
+		//==> Test 용 User instance 생성  
+		Item item = new Item("7777","망고",9000,"맜있어요");
+			
+		//1. MyBatisUserDAOImpl10.addUser Test  
+		System.out.println(":: 1. addUser(INSERT)  ? "	+ dao.addUser(user) );
+		
+		//2. MyBatisUserDAOImpl10.getUser Test :: 주몽 inert 확인 
+		System.out.println(":: 2. getUser(SELECT)  ? \n " + dao.getUser(user.getUserId()) );
+
+		
+		
+		
+        // === getItem 테스트 ===
+		System.out.println(":: getItem(SELECT) ? ");
+		TestUtil.printList(dao.getItem(itemId));
+		
+        String itemId = "1001"; // 실제 존재하는 item_id로 변경
+        System.out.println(":: [1] getItem() 단위테스트 ::");
+        Item resultItem = dao.getItem(itemId);
+
+        // === getItemList 테스트 ===
+        System.out.println("::getItemList() 단위테스트 ::");
+        Item searchCond = new Item(); // 조건 없이 전체 검색
+        searchCond.setName(null); // 필요 시 검색 조건 추가
+        // searchCond.setPrice(1500);
+
+
+		//2. MyBatisUserDAOImpl10.getUser Test :: 주몽 inert 확인 
+		System.out.println(":: 2. getItem(SELECT)  ? \n " + dao.getItem(item.getItemId()) );
+
+		//7. MyBatisUserDAOImpl10.getUserList Test 
+		itemId.setUserId(null);
+		item.setUserName(null);
+		System.out.println(":: 7. getUserList(SELECT)  ? ");
+		TestUtil.printList( dao.getItemList(item) );
+		
+	}//end of main
+}//end of class

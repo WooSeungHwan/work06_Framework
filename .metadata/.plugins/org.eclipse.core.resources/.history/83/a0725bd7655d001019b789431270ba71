@@ -1,0 +1,23 @@
+package mybatis.services.item.Impl.copy;
+
+import java.util.List;
+
+import com.service.spring.domain.Item;
+
+import mybatis.services.item.itemDAO;
+
+public class itemDAOImpl2 implements itemDAO{
+
+	@Override
+	public Item getItem(String itemId) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Item> getItemList(Item item) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package mybatis.services.spring.test;
+
+public class DAOUnitTest {
+
+}

@@ -1,0 +1,37 @@
+package mybatis.services.item.Impl;
+
+import java.util.List;
+
+import com.service.spring.domain.Item;
+
+import mybatis.services.domain.User;
+import mybatis.services.item.itemDAO;
+
+public class itemDAOImpl implements itemDAO{
+
+	@Override
+	public Item getItem(String itemId) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Item> getItemList(Item item) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+/*	@Override
+	public User getUser(String userId) throws Exception {
+
+		return sqlSession.selectOne(NS+"getUser", userId);
+	}
+
+	@Override
+	public List<User> getUserList(User user) throws Exception {
+
+		return sqlSession.selectList(NS+"getUserList", user);
+	}
+
+ * */

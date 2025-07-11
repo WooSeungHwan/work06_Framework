@@ -1,0 +1,10 @@
+package mybatis.services.spring.test;
+
+public class DAOUnitTest2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

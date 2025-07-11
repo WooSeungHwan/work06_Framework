@@ -1,0 +1,14 @@
+package mybatis.services.user.impl;
+
+import mybatis.services.user.UserDAO;
+import mybatis.services.user.UserService;
+
+public class MyBatisUserServiceImpl11 implements UserService{
+	private UserDAO userDAO;
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+	
+
+}

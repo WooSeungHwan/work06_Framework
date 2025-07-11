@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<!-- SQL definition -->
+<mapper namespace="FruitsMapper">
+<resultMap type="item" id="itemSelectRM">
+	<result property="itemId" column="item_id"/>
+	<result property="itemName" column="item_name"/>
+	<result property="price" column="price"/>
+	<result property="description" column="description"/>
+	<result property="pictureUrl" column="picture_rul"/>
+	<result property="count" column="count"/>
+</resultMap>
+
+<sql id ="select-item">
+	SELECT
+	item_id, item_name, price, description, picture_rul, count
+	FROM item
+</sql>
+
+<select id="getItemList" parameterType="item" resultMap="itemSerlectRM">
+	<include refid="select-users"/>
+	상품 가격
+</select>
+
+<select id="getUserList" parameterType="user" resultMap="userSelectRM">
+	<include refid="select-item"/>	
+	<where>
+		<if test="itemName !=null">
+			user_name LIKE #{userName}
+		</if>
+		<if test="price !=null">
+			OR age LIKE #{age}
+		</if>
+		
+	</where>
+	<include refid="order-userid-desc"/>
+	<include refid="select-users"/>	
+	<where>
+		<if test="userName !=null">
+			user_name LIKE #{userName}
+		</if>
+		<if test="age !=null">
+			OR age LIKE #{age}
+		</if>
+		
+	</where>
+	<include refid="order-userid-desc"/>
+
+
+<select id="getItem">
+
+</select>
+</mapper>

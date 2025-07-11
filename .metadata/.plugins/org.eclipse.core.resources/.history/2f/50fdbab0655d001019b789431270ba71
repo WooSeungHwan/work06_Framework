@@ -1,0 +1,5 @@
+package mybatis.services.item.Impl;
+
+public class itemDAOImpl {
+
+}

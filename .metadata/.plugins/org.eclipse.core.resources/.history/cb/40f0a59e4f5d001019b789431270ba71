@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	1. ResultMap
+	컬럼 Alias 쓰는 경우 :: 디비컬럼명과 자바 필드명이 다를때...
+	SELECT문에서 사용됨......
+	getList getUser......SELECT쿼리가 필요하고 resultType="string" | user | user
+	
+	컬럼 Alias :: 이 부분을 사용하지 않으려면 ResultMap을 한번 지정하면 된다.
+	2. Dynamic Query
+	DML
+		1) INSERT
+		2) DELETE
+		3) UPDATE
+	4) SELECT
+ --> 
+<mapper namespace="UserMapper07">
+<resultMap type="user" id="userSelectRM">
+	<result property="userId" column="user_id"/>
+	<result property="userName" column="user_name"/>
+	<result property="password" column="password"/>
+	<result property="age" column="age"/>
+	<result property="grade" column="grade"/>		<!-- property는 set이다 ${} 은 get이다 -->
+	<result property="regDate" column="reg_date"/>
+
+</resultMap>
+<select id="getUserList01" parameterType="user" resultMap="userSelectRM">
+	SELECT
+	user_id, user_name, password, age, reg_date
+	FROM users
+	WHERE password=#{password}
+
+</select> 
+
+<select id="getUserList" parameterType="user" resultMap="userSelectRM">
+	SELECT
+	user_id, user_name, password, age, reg_date
+	FROM users
+	<where>
+		<if test="userName !=null">
+			user_name LIKE #{userName}
+		</if>
+		<if test="age !=null">
+			age LIKE #{age}
+		</if>
+		
+	</where>
+	
+</select> 
+
+</mapper>
